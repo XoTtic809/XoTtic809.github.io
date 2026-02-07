@@ -3,102 +3,668 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethan Lynn | Roblox & Game Dev</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Ethan Lynn - Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #808080;
+            --light-gray: #d0d0d0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--black);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 2rem;
+            background: 
+                linear-gradient(90deg, var(--black) 1px, transparent 1px),
+                linear-gradient(var(--black) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0;
+            animation: gridScroll 20s linear infinite;
+        }
+
+        @keyframes gridScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                var(--white) 0%, 
+                transparent 50%, 
+                var(--white) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+            animation: slideUp 1s ease-out 0.3s both;
+        }
+
+        .hero .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeIn 1s ease-out 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--black);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: var(--white);
+            transform: translate(-50%, -50%);
+            transition: all 0.5s ease;
+            border-radius: 50%;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            color: var(--black);
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--black);
+            border: 2px solid var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: 4px;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--black);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            border: 2px solid var(--black);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateX(10px);
+        }
+
+        .skill-category h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .skill-category ul li::before {
+            content: '▸ ';
+            margin-right: 0.5rem;
+        }
+
+        /* Projects Section */
+        #projects {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        #projects .section-title::after {
+            background: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border: 2px solid var(--white);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            transition: all 0.4s ease;
+            z-index: 0;
+        }
+
+        .project-card:hover::before {
+            left: 0;
+        }
+
+        .project-card:hover {
+            color: var(--black);
+        }
+
+        .project-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tag {
+            padding: 0.3rem 0.8rem;
+            border: 1px solid currentColor;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .project-links a {
+            color: inherit;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-bottom: 1px solid currentColor;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-method {
+            padding: 2rem;
+            border: 2px solid var(--black);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--black);
+            display: block;
+        }
+
+        .contact-method:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-10px);
+        }
+
+        .contact-method h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            border-top: 2px solid var(--white);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                letter-spacing: 4px;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-
-    <nav class="navbar">
-        <div class="logo">ethanlynn<span class="accent">.dev</span></div>
-        <ul class="nav-links">
-            <li><a href="#skills">Stack</a></li>
-            <li><a href="#portfolio">Projects</a></li>
-            <li><a href="#contact" class="btn-contact">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1 class="glitch" data-text="Game Developer">Game Developer</h1>
-            <h2>Specializing in <span class="accent">Roblox</span> & <span class="accent">Computer Science</span></h2>
-            <div class="cta-group">
-                <a href="#portfolio" class="btn primary">View My Work</a>
-                <a href="https://github.com/XoTtic809" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
-            </div>
-        </div>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">ETHAN LYNN</div>
+            <ul class="nav-links">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="skills" class="section">
-        <div class="container">
-            <h3 class="section-title">Tech Stack</h3>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fas fa-gamepad"></i>
-                    <h4>Roblox Studio</h4>
-                    <p>Luau, Rojo, Knit, DataStores</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ETHAN LYNN</h1>
+            <p class="subtitle">Developer | Roblox Developer | Cybersecurity Enthusiast | Web Developer</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary"><span>VIEW PROJECTS</span></a>
+                <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">ABOUT ME</h2>
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <p>I'm a passionate developer specializing in Roblox game development, cybersecurity, and web development. With a strong foundation in computer science, I create engaging experiences and secure solutions.</p>
+                <p>I'm actively seeking opportunities to join innovative development teams and contribute to exciting projects. Whether it's building immersive Roblox games, developing secure web applications, or solving complex cybersecurity challenges, I bring dedication and technical expertise to every project.</p>
+                <p>My goal is to leverage my diverse skill set to create impactful digital experiences while continuously learning and growing in the ever-evolving tech landscape.</p>
+            </div>
+            <div class="skills-grid fade-in">
+                <div class="skill-category">
+                    <h3>ROBLOX DEV</h3>
+                    <ul>
+                        <li>Lua Scripting</li>
+                        <li>Game Design</li>
+                        <li>UI/UX</li>
+                        <li>Datastores</li>
+                    </ul>
                 </div>
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h4>Programming</h4>
-                    <p>Python, C++, JS, Luau</p>
+                <div class="skill-category">
+                    <h3>WEB DEV</h3>
+                    <ul>
+                        <li>HTML/CSS/JS</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Responsive Design</li>
+                    </ul>
                 </div>
-                <div class="skill-card">
-                    <i class="fas fa-terminal"></i>
-                    <h4>Tools</h4>
-                    <p>Git, VS Code, Blender</p>
+                <div class="skill-category">
+                    <h3>CYBERSECURITY</h3>
+                    <ul>
+                        <li>Network Security</li>
+                        <li>Ethical Hacking</li>
+                        <li>Penetration Testing</li>
+                        <li>Security Protocols</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>GENERAL</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Git/GitHub</li>
+                        <li>Problem Solving</li>
+                        <li>Team Collaboration</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="portfolio" class="section">
-        <div class="container">
-            <h3 class="section-title">Selected Works</h3>
-            <div class="project-grid">
-                <article class="project-card">
-                    <div class="card-image">
-                        <i class="fas fa-cube placeholder-icon"></i>
-                    </div>
-                    <div class="card-content">
-                        <span class="tag">Roblox / Luau</span>
-                        <h4>FPS Framework</h4>
-                        <p>Modular gun system with raycasting and server validation.</p>
-                        <a href="#" class="link-text">View Code <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">FEATURED PROJECTS</h2>
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <h3>PROJECT NAME 1</h3>
+                <p>A description of your Roblox game or project. Explain the concept, gameplay mechanics, and what makes it unique. Highlight the technical challenges you solved.</p>
+                <div class="project-tags">
+                    <span class="tag">ROBLOX</span>
+                    <span class="tag">LUA</span>
+                    <span class="tag">GAME DESIGN</span>
+                </div>
+                <div class="project-links">
+                    <a href="#">VIEW PROJECT →</a>
+                    <a href="#">GITHUB →</a>
+                </div>
+            </div>
 
-                <article class="project-card">
-                    <div class="card-image">
-                         <i class="fas fa-database placeholder-icon"></i>
-                    </div>
-                    <div class="card-content">
-                        <span class="tag">Systems</span>
-                        <h4>Data Serialization</h4>
-                        <p>Custom optimization tool for high-traffic data storage.</p>
-                        <a href="#" class="link-text">View Repo <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </article>
+            <div class="project-card fade-in">
+                <h3>PROJECT NAME 2</h3>
+                <p>Description of a web development project or application you've built. Focus on the technologies used, features implemented, and the problem it solves.</p>
+                <div class="project-tags">
+                    <span class="tag">WEB DEV</span>
+                    <span class="tag">REACT</span>
+                    <span class="tag">NODE.JS</span>
+                </div>
+                <div class="project-links">
+                    <a href="#">LIVE SITE →</a>
+                    <a href="#">GITHUB →</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3>PROJECT NAME 3</h3>
+                <p>A cybersecurity project or tool you've developed. Describe the security concepts applied, vulnerabilities addressed, or educational purpose of the project.</p>
+                <div class="project-tags">
+                    <span class="tag">CYBERSECURITY</span>
+                    <span class="tag">PYTHON</span>
+                    <span class="tag">SECURITY</span>
+                </div>
+                <div class="project-links">
+                    <a href="#">VIEW PROJECT →</a>
+                    <a href="#">GITHUB →</a>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <h3>PROJECT NAME 4</h3>
+                <p>Another project showcasing your skills. This could be a collaborative project, open-source contribution, or personal experiment that demonstrates your abilities.</p>
+                <div class="project-tags">
+                    <span class="tag">FULL STACK</span>
+                    <span class="tag">API</span>
+                    <span class="tag">DATABASE</span>
+                </div>
+                <div class="project-links">
+                    <a href="#">VIEW PROJECT →</a>
+                    <a href="#">GITHUB →</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <div class="container footer-content">
-            <h2>Let's build.</h2>
-            <div class="socials">
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">LET'S CONNECT</h2>
+        <div class="contact-content">
+            <p>I'm always open to discussing new projects, creative ideas, or opportunities to join your team. Feel free to reach out!</p>
+            <div class="contact-methods">
+                <a href="mailto:your.email@example.com" class="contact-method fade-in">
+                    <h3>EMAIL</h3>
+                    <p>your.email@example.com</p>
+                </a>
+                <a href="https://github.com/yourusername" target="_blank" class="contact-method fade-in">
+                    <h3>GITHUB</h3>
+                    <p>@yourusername</p>
+                </a>
+                <a href="https://discord.com/users/yourID" target="_blank" class="contact-method fade-in">
+                    <h3>DISCORD</h3>
+                    <p>username#0000</p>
+                </a>
             </div>
-            <p class="copyright">&copy; 2026 Ethan Lynn. Built for the Dark.</p>
         </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ethan Lynn. All rights reserved. Built with passion and code.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
 </body>
 </html>
