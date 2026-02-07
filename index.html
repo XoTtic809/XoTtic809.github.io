@@ -1,77 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ethan Lynn | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan Lynn | Roblox & Game Dev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="logo">Ethan Lynn</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <h1>Hi, I'm Ethan Lynn</h1>
-    <p>Developer | Designer | Creator</p>
-    <a href="#projects" class="btn">View My Work</a>
-  </section>
+    <nav class="navbar">
+        <div class="logo">ethanlynn<span class="accent">.dev</span></div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Stack</a></li>
+            <li><a href="#portfolio">Projects</a></li>
+            <li><a href="#contact" class="btn-contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
 
-  <!-- About Me -->
-  <section id="about" class="about">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <img src="profile.jpg" alt="Ethan Lynn">
-      <p>Hello! I'm Ethan, a passionate developer creating web applications and projects that solve real-world problems. I love coding, learning new technologies, and building things from scratch.</p>
-      <p><strong>Skills:</strong> HTML, CSS, JavaScript, React, Python, Git, GitHub</p>
-    </div>
-  </section>
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="Game Developer">Game Developer</h1>
+            <h2>Specializing in <span class="accent">Roblox</span> & <span class="accent">Computer Science</span></h2>
+            <p>Building immersive worlds and scalable backend systems in Luau and Python.</p>
+            <div class="cta-group">
+                <a href="#portfolio" class="btn primary">View My Work</a>
+                <a href="https://github.com/YOUR_GITHUB_USER" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
+            </div>
+        </div>
+    </header>
 
-  <!-- Projects -->
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <img src="project1.png" alt="Project 1">
-        <h3>Project One</h3>
-        <p>A brief description of your project. Tech used: HTML, CSS, JS.</p>
-        <a href="#" target="_blank">View Project</a>
-      </div>
-      <div class="project-card">
-        <img src="project2.png" alt="Project 2">
-        <h3>Project Two</h3>
-        <p>A brief description of your project. Tech used: React, Node.js.</p>
-        <a href="#" target="_blank">View Project</a>
-      </div>
-      <!-- Add more projects here -->
-    </div>
-  </section>
+    <section id="skills" class="section">
+        <div class="container">
+            <h3 class="section-title">Tech Stack</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h4>Roblox Studio</h4>
+                    <p>Luau, Rojo, Knit Framework, DataStores</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h4>Programming</h4>
+                    <p>Python, C++, Java, JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-server"></i>
+                    <h4>Tools</h4>
+                    <p>Git, VS Code, Blender, Photoshop</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>Contact Me</h2>
-    <p>You can reach me at <a href="mailto:ethan@example.com">ethan@example.com</a> or connect on social media below.</p>
-    <div class="social-links">
-      <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
-      <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
-    </div>
-  </section>
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h3 class="section-title">Selected Works</h3>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="card-image" style="background-color: #2a2a2a;">
+                        <div class="placeholder-icon"><i class="fas fa-cube"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <h4>FPS Framework</h4>
+                        <span class="tag">Roblox / Luau</span>
+                        <p>A modular gun system featuring raycasting, recoil patterns, and server-side validation.</p>
+                        <a href="#" class="link-text">View Code <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Ethan Lynn. All Rights Reserved.</p>
-  </footer>
+                <article class="project-card">
+                    <div class="card-image" style="background-color: #2a2a2a;">
+                         <div class="placeholder-icon"><i class="fas fa-database"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <h4>Data Serialization Tool</h4>
+                        <span class="tag">Computer Science</span>
+                        <p>A custom tool to optimize data storage for high-traffic games, reducing load times by 40%.</p>
+                        <a href="#" class="link-text">View Repo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <article class="project-card">
+                    <div class="card-image" style="background-color: #2a2a2a;">
+                         <div class="placeholder-icon"><i class="fas fa-map"></i></div>
+                    </div>
+                    <div class="card-content">
+                        <h4>Open World RPG Map</h4>
+                        <span class="tag">Level Design</span>
+                        <p>Large-scale terrain generation and environmental storytelling for an upcoming adventure game.</p>
+                        <a href="#" class="link-text">Play Game <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
+    <footer id="contact">
+        <div class="container footer-content">
+            <h2>Let's build something.</h2>
+            <p>Available for commissions and collaboration.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="#"><i class="fas fa-envelope"></i> Email</a>
+            </div>
+            <p class="copyright">&copy; 2026 Ethan Lynn. Built for the Dark.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
