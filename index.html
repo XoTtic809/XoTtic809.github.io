@@ -97,65 +97,6 @@
             overflow: hidden;
         }
 
-        .hero::before,
-        .hero::after {
-            content: '';
-            position: absolute;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            pointer-events: none;
-        }
-
-        .hero::before {
-            width: 300px;
-            height: 300px;
-            top: 10%;
-            left: 5%;
-            border-radius: 50%;
-            animation: float1 20s ease-in-out infinite;
-        }
-
-        .hero::after {
-            width: 200px;
-            height: 200px;
-            bottom: 15%;
-            right: 10%;
-            animation: float2 15s ease-in-out infinite;
-        }
-
-        @keyframes float1 {
-            0%, 100% { 
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0.3;
-            }
-            25% {
-                transform: translate(50px, -30px) rotate(90deg);
-                opacity: 0.5;
-            }
-            50% { 
-                transform: translate(100px, 20px) rotate(180deg);
-                opacity: 0.3;
-            }
-            75% {
-                transform: translate(30px, 50px) rotate(270deg);
-                opacity: 0.6;
-            }
-        }
-
-        @keyframes float2 {
-            0%, 100% { 
-                transform: translate(0, 0) rotate(0deg) scale(1);
-                opacity: 0.4;
-            }
-            33% {
-                transform: translate(-40px, -50px) rotate(120deg) scale(1.2);
-                opacity: 0.6;
-            }
-            66% { 
-                transform: translate(-80px, 30px) rotate(240deg) scale(0.8);
-                opacity: 0.3;
-            }
-        }
-
         .hero-content {
             position: relative;
             z-index: 1;
@@ -673,66 +614,63 @@
     </footer>
 
     <script>
-        // Create floating shapes
-        function createFloatingShapes() {
+        // Create floating particles
+        function createFloatingParticles() {
             const hero = document.querySelector('.hero');
-            const shapes = ['circle', 'square', 'triangle'];
-            const numShapes = 8;
+            const numParticles = 50;
 
-            for (let i = 0; i < numShapes; i++) {
-                const shape = document.createElement('div');
-                const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                const size = 2 + Math.random() * 6;
                 
-                shape.className = 'floating-shape';
-                shape.style.cssText = `
+                particle.className = 'particle';
+                particle.style.cssText = `
                     position: absolute;
-                    width: ${50 + Math.random() * 150}px;
-                    height: ${50 + Math.random() * 150}px;
-                    border: 2px solid rgba(255, 255, 255, ${0.05 + Math.random() * 0.15});
-                    top: ${Math.random() * 80}%;
-                    left: ${Math.random() * 90}%;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: rgba(255, 255, 255, ${0.2 + Math.random() * 0.6});
+                    border-radius: 50%;
+                    top: ${Math.random() * 100}%;
+                    left: ${Math.random() * 100}%;
                     pointer-events: none;
-                    animation: float${i} ${15 + Math.random() * 15}s ease-in-out infinite;
-                    animation-delay: ${-Math.random() * 10}s;
+                    animation: particleFloat${i} ${10 + Math.random() * 20}s ease-in-out infinite;
+                    animation-delay: ${-Math.random() * 15}s;
                 `;
 
-                if (shapeType === 'circle') {
-                    shape.style.borderRadius = '50%';
-                } else if (shapeType === 'triangle') {
-                    shape.style.width = '0';
-                    shape.style.height = '0';
-                    shape.style.border = 'none';
-                    const size = 50 + Math.random() * 100;
-                    shape.style.borderLeft = `${size}px solid transparent`;
-                    shape.style.borderRight = `${size}px solid transparent`;
-                    shape.style.borderBottom = `${size * 1.7}px solid rgba(255, 255, 255, ${0.05 + Math.random() * 0.15})`;
-                }
-
-                // Add unique animation
+                // Add unique animation for each particle
                 const style = document.createElement('style');
+                const moveX = -100 + Math.random() * 200;
+                const moveY = -100 + Math.random() * 200;
+                const moveX2 = -80 + Math.random() * 160;
+                const moveY2 = -80 + Math.random() * 160;
+                
                 style.textContent = `
-                    @keyframes float${i} {
+                    @keyframes particleFloat${i} {
                         0%, 100% { 
-                            transform: translate(0, 0) rotate(0deg);
-                            opacity: ${0.2 + Math.random() * 0.3};
+                            transform: translate(0, 0);
+                            opacity: ${0.2 + Math.random() * 0.4};
                         }
-                        33% {
-                            transform: translate(${-50 + Math.random() * 100}px, ${-50 + Math.random() * 100}px) rotate(${Math.random() * 180}deg);
+                        25% {
+                            transform: translate(${moveX * 0.3}px, ${moveY * 0.3}px);
+                            opacity: ${0.4 + Math.random() * 0.5};
+                        }
+                        50% {
+                            transform: translate(${moveX}px, ${moveY}px);
                             opacity: ${0.3 + Math.random() * 0.4};
                         }
-                        66% {
-                            transform: translate(${-80 + Math.random() * 160}px, ${-30 + Math.random() * 60}px) rotate(${Math.random() * 360}deg);
-                            opacity: ${0.1 + Math.random() * 0.3};
+                        75% {
+                            transform: translate(${moveX2}px, ${moveY2}px);
+                            opacity: ${0.5 + Math.random() * 0.4};
                         }
                     }
                 `;
                 document.head.appendChild(style);
-                hero.appendChild(shape);
+                hero.appendChild(particle);
             }
         }
 
         // Call on page load
-        createFloatingShapes();
+        createFloatingParticles();
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
