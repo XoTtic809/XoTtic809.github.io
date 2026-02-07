@@ -93,28 +93,67 @@
             justify-content: center;
             position: relative;
             padding: 2rem;
-            background: 
-                linear-gradient(90deg, var(--white) 1px, transparent 1px),
-                linear-gradient(var(--white) 1px, transparent 1px);
-            background-size: 50px 50px;
-            background-position: 0 0;
-            animation: gridScroll 20s linear infinite;
+            background: var(--black);
+            overflow: hidden;
         }
 
-        @keyframes gridScroll {
-            0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            pointer-events: none;
         }
 
         .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, 
-                var(--black) 0%, 
-                transparent 50%, 
-                var(--black) 100%
-            );
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            border-radius: 50%;
+            animation: float1 20s ease-in-out infinite;
+        }
+
+        .hero::after {
+            width: 200px;
+            height: 200px;
+            bottom: 15%;
+            right: 10%;
+            animation: float2 15s ease-in-out infinite;
+        }
+
+        @keyframes float1 {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% {
+                transform: translate(50px, -30px) rotate(90deg);
+                opacity: 0.5;
+            }
+            50% { 
+                transform: translate(100px, 20px) rotate(180deg);
+                opacity: 0.3;
+            }
+            75% {
+                transform: translate(30px, 50px) rotate(270deg);
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes float2 {
+            0%, 100% { 
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                opacity: 0.4;
+            }
+            33% {
+                transform: translate(-40px, -50px) rotate(120deg) scale(1.2);
+                opacity: 0.6;
+            }
+            66% { 
+                transform: translate(-80px, 30px) rotate(240deg) scale(0.8);
+                opacity: 0.3;
+            }
         }
 
         .hero-content {
@@ -630,10 +669,71 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Ethan Lynn. All rights reserved. Built with passion and code.</p>
+        <p>&copy; 2025 Ethan Lynn. All rights reserved. Built with passion and code.</p>
     </footer>
 
     <script>
+        // Create floating shapes
+        function createFloatingShapes() {
+            const hero = document.querySelector('.hero');
+            const shapes = ['circle', 'square', 'triangle'];
+            const numShapes = 8;
+
+            for (let i = 0; i < numShapes; i++) {
+                const shape = document.createElement('div');
+                const shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+                
+                shape.className = 'floating-shape';
+                shape.style.cssText = `
+                    position: absolute;
+                    width: ${50 + Math.random() * 150}px;
+                    height: ${50 + Math.random() * 150}px;
+                    border: 2px solid rgba(255, 255, 255, ${0.05 + Math.random() * 0.15});
+                    top: ${Math.random() * 80}%;
+                    left: ${Math.random() * 90}%;
+                    pointer-events: none;
+                    animation: float${i} ${15 + Math.random() * 15}s ease-in-out infinite;
+                    animation-delay: ${-Math.random() * 10}s;
+                `;
+
+                if (shapeType === 'circle') {
+                    shape.style.borderRadius = '50%';
+                } else if (shapeType === 'triangle') {
+                    shape.style.width = '0';
+                    shape.style.height = '0';
+                    shape.style.border = 'none';
+                    const size = 50 + Math.random() * 100;
+                    shape.style.borderLeft = `${size}px solid transparent`;
+                    shape.style.borderRight = `${size}px solid transparent`;
+                    shape.style.borderBottom = `${size * 1.7}px solid rgba(255, 255, 255, ${0.05 + Math.random() * 0.15})`;
+                }
+
+                // Add unique animation
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes float${i} {
+                        0%, 100% { 
+                            transform: translate(0, 0) rotate(0deg);
+                            opacity: ${0.2 + Math.random() * 0.3};
+                        }
+                        33% {
+                            transform: translate(${-50 + Math.random() * 100}px, ${-50 + Math.random() * 100}px) rotate(${Math.random() * 180}deg);
+                            opacity: ${0.3 + Math.random() * 0.4};
+                        }
+                        66% {
+                            transform: translate(${-80 + Math.random() * 160}px, ${-30 + Math.random() * 60}px) rotate(${Math.random() * 360}deg);
+                            opacity: ${0.1 + Math.random() * 0.3};
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+                hero.appendChild(shape);
+            }
+        }
+
+        // Call on page load
+        createFloatingShapes();
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
