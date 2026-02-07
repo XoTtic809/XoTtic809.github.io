@@ -631,7 +631,7 @@
                     background: rgba(255, 255, 255, ${0.2 + Math.random() * 0.6});
                     border-radius: 50%;
                     top: ${Math.random() * 100}%;
-                    left: ${Math.random() * 100}%;
+                    left: ${-5 + Math.random() * 110}%;
                     pointer-events: none;
                     animation: particleFloat${i} ${10 + Math.random() * 20}s ease-in-out infinite;
                     animation-delay: ${-Math.random() * 15}s;
@@ -639,10 +639,10 @@
 
                 // Add unique animation for each particle
                 const style = document.createElement('style');
-                const moveX = -100 + Math.random() * 200;
-                const moveY = -100 + Math.random() * 200;
-                const moveX2 = -80 + Math.random() * 160;
-                const moveY2 = -80 + Math.random() * 160;
+                const moveX = -150 + Math.random() * 300;
+                const moveY = -150 + Math.random() * 300;
+                const moveX2 = -120 + Math.random() * 240;
+                const moveY2 = -120 + Math.random() * 240;
                 
                 style.textContent = `
                     @keyframes particleFloat${i} {
