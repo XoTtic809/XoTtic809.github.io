@@ -23,8 +23,8 @@
 
         body {
             font-family: 'JetBrains Mono', monospace;
-            background: var(--white);
-            color: var(--black);
+            background: var(--black);
+            color: var(--white);
             overflow-x: hidden;
             line-height: 1.6;
         }
@@ -34,8 +34,8 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--white);
-            border-bottom: 2px solid var(--black);
+            background: var(--black);
+            border-bottom: 2px solid var(--white);
             z-index: 1000;
             padding: 1.5rem 2rem;
         }
@@ -61,7 +61,7 @@
         }
 
         .nav-links a {
-            color: var(--black);
+            color: var(--white);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 600;
@@ -76,7 +76,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--black);
+            background: var(--white);
             transition: width 0.3s ease;
         }
 
@@ -94,8 +94,8 @@
             position: relative;
             padding: 2rem;
             background: 
-                linear-gradient(90deg, var(--black) 1px, transparent 1px),
-                linear-gradient(var(--black) 1px, transparent 1px);
+                linear-gradient(90deg, var(--white) 1px, transparent 1px),
+                linear-gradient(var(--white) 1px, transparent 1px);
             background-size: 50px 50px;
             background-position: 0 0;
             animation: gridScroll 20s linear infinite;
@@ -111,9 +111,9 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(135deg, 
-                var(--white) 0%, 
+                var(--black) 0%, 
                 transparent 50%, 
-                var(--white) 100%
+                var(--black) 100%
             );
         }
 
@@ -158,9 +158,9 @@
         }
 
         .btn-primary {
-            background: var(--black);
-            color: var(--white);
-            border: 2px solid var(--black);
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--white);
         }
 
         .btn-primary::before {
@@ -170,7 +170,7 @@
             left: 50%;
             width: 0;
             height: 0;
-            background: var(--white);
+            background: var(--black);
             transform: translate(-50%, -50%);
             transition: all 0.5s ease;
             border-radius: 50%;
@@ -182,7 +182,7 @@
         }
 
         .btn-primary:hover {
-            color: var(--black);
+            color: var(--white);
         }
 
         .btn-primary span {
@@ -192,13 +192,13 @@
 
         .btn-secondary {
             background: transparent;
-            color: var(--black);
-            border: 2px solid var(--black);
+            color: var(--white);
+            border: 2px solid var(--white);
         }
 
         .btn-secondary:hover {
-            background: var(--black);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
         }
 
         @keyframes slideDown {
@@ -239,7 +239,7 @@
             left: 0;
             width: 60%;
             height: 4px;
-            background: var(--black);
+            background: var(--white);
         }
 
         /* About Section */
@@ -263,14 +263,14 @@
         }
 
         .skill-category {
-            border: 2px solid var(--black);
+            border: 2px solid var(--white);
             padding: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .skill-category:hover {
-            background: var(--black);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
             transform: translateX(10px);
         }
 
@@ -293,12 +293,12 @@
 
         /* Projects Section */
         #projects {
-            background: var(--black);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
         }
 
         #projects .section-title::after {
-            background: var(--white);
+            background: var(--black);
         }
 
         .projects-grid {
@@ -308,7 +308,7 @@
         }
 
         .project-card {
-            border: 2px solid var(--white);
+            border: 2px solid var(--black);
             padding: 2rem;
             transition: all 0.3s ease;
             position: relative;
@@ -322,7 +322,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--white);
+            background: var(--black);
             transition: all 0.4s ease;
             z-index: 0;
         }
@@ -332,7 +332,7 @@
         }
 
         .project-card:hover {
-            color: var(--black);
+            color: var(--white);
         }
 
         .project-card > * {
@@ -396,16 +396,16 @@
 
         .contact-method {
             padding: 2rem;
-            border: 2px solid var(--black);
+            border: 2px solid var(--white);
             transition: all 0.3s ease;
             text-decoration: none;
-            color: var(--black);
+            color: var(--white);
             display: block;
         }
 
         .contact-method:hover {
-            background: var(--black);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
             transform: translateY(-10px);
         }
 
@@ -418,11 +418,11 @@
 
         /* Footer */
         footer {
-            background: var(--black);
-            color: var(--white);
+            background: var(--white);
+            color: var(--black);
             text-align: center;
             padding: 2rem;
-            border-top: 2px solid var(--white);
+            border-top: 2px solid var(--black);
         }
 
         footer p {
@@ -469,11 +469,11 @@
         }
     </style>
 </head>
-<body>
+<body id="top">
     <!-- Navigation -->
     <header>
         <nav>
-            <div class="logo">ETHAN LYNN</div>
+            <a href="#top" class="logo" style="text-decoration: none; color: inherit;">ETHAN LYNN</a>
             <ul class="nav-links">
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#projects">PROJECTS</a></li>
@@ -499,8 +499,8 @@
         <h2 class="section-title">ABOUT ME</h2>
         <div class="about-content">
             <div class="about-text fade-in">
-                <p>I’m a developer with experience in Roblox game development, cybersecurity, and web development. I have a strong foundation in computer science and enjoy building engaging systems as well as secure, reliable solutions.</p>
-                <p>I’m currently looking for opportunities to work with innovative teams and contribute to meaningful projects. Whether I’m developing Roblox games, building secure web applications, or tackling cybersecurity challenges, I approach my work with focus, care, and attention to detail.</p>
+                <p>I'm a developer with experience in Roblox game development, cybersecurity, and web development. I have a strong foundation in computer science and enjoy building engaging systems as well as secure, reliable solutions.</p>
+                <p>I'm currently looking for opportunities to work with innovative teams and contribute to meaningful projects. Whether I'm developing Roblox games, building secure web applications, or tackling cybersecurity challenges, I approach my work with focus, care, and attention to detail.</p>
                 <p>My goal is to continue growing as a developer while using my skills to create practical, well-designed digital experiences.</p>
             </div>
             <div class="skills-grid fade-in">
