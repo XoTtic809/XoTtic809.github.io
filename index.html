@@ -84,6 +84,71 @@
             width: 100%;
         }
 
+        /* Privacy Notice */
+        .privacy-notice {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            color: var(--black);
+            padding: 1rem 2rem;
+            border-top: 2px solid var(--black);
+            z-index: 2000;
+            display: none;
+            animation: slideUpNotice 0.5s ease-out;
+        }
+
+        .privacy-notice.show {
+            display: block;
+        }
+
+        .privacy-notice-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .privacy-notice p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .privacy-notice-close {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--black);
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .privacy-notice-close:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        @keyframes slideUpNotice {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .privacy-notice-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
         /* Hero Section */
         .hero {
             margin-top: 80px;
@@ -450,6 +515,14 @@
     </style>
 </head>
 <body id="top">
+    <!-- Privacy Notice -->
+    <div class="privacy-notice" id="privacyNotice">
+        <div class="privacy-notice-content">
+            <p>Built by Ethan Lynn. No cookies, no tracking, no data collection — your privacy is respected here.</p>
+            <button class="privacy-notice-close" id="closeNotice">GOT IT</button>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <header>
         <nav>
@@ -614,6 +687,23 @@
     </footer>
 
     <script>
+        // Privacy Notice Logic
+        const privacyNotice = document.getElementById('privacyNotice');
+        const closeNotice = document.getElementById('closeNotice');
+
+        // Check if user has already seen the notice
+        if (!localStorage.getItem('privacyNoticeDismissed')) {
+            setTimeout(() => {
+                privacyNotice.classList.add('show');
+            }, 1000); // Show after 1 second
+        }
+
+        // Close button handler
+        closeNotice.addEventListener('click', () => {
+            privacyNotice.classList.remove('show');
+            localStorage.setItem('privacyNoticeDismissed', 'true');
+        });
+
         // Create floating particles
         function createFloatingParticles() {
             const hero = document.querySelector('.hero');
