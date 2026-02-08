@@ -84,6 +84,22 @@
             width: 100%;
         }
 
+        /* Accessibility - Focus States */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--white);
+            outline-offset: 4px;
+        }
+
+        #projects a:focus {
+            outline-color: var(--black);
+        }
+
+        .nav-links a:focus {
+            outline: 2px solid var(--white);
+            outline-offset: 4px;
+        }
+
         /* Privacy Notice */
         .privacy-notice {
             position: fixed;
@@ -151,7 +167,7 @@
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
+            margin-top: 70px;
             min-height: 90vh;
             display: flex;
             align-items: center;
@@ -519,18 +535,18 @@
     <div class="privacy-notice" id="privacyNotice">
         <div class="privacy-notice-content">
             <p>No cookies, no tracking, no data collection — your privacy is respected here.</p>
-            <button class="privacy-notice-close" id="closeNotice">GOT IT</button>
+            <button class="privacy-notice-close" id="closeNotice" aria-label="Close privacy notice">GOT IT</button>
         </div>
     </div>
 
     <!-- Navigation -->
     <header>
         <nav>
-            <a href="#top" class="logo">ETHAN LYNN</a>
+            <a href="#top" class="logo" aria-label="Return to top of page">ETHAN LYNN</a>
             <ul class="nav-links">
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#projects">PROJECTS</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#about" aria-label="Navigate to About section">ABOUT</a></li>
+                <li><a href="#projects" aria-label="Navigate to Projects section">PROJECTS</a></li>
+                <li><a href="#contact" aria-label="Navigate to Contact section">CONTACT</a></li>
             </ul>
         </nav>
     </header>
@@ -541,8 +557,8 @@
             <h1>ETHAN LYNN</h1>
             <p class="subtitle">Developer | Cybersecurity Enthusiast | Web Developer | Game Developer</p>
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary"><span>VIEW PROJECTS</span></a>
-                <a href="#contact" class="btn btn-secondary">GET IN TOUCH</a>
+                <a href="#projects" class="btn btn-primary" aria-label="View my projects"><span>VIEW PROJECTS</span></a>
+                <a href="#contact" class="btn btn-secondary" aria-label="Get in touch with me">GET IN TOUCH</a>
             </div>
         </div>
     </section>
@@ -619,9 +635,9 @@
                 <h3>Personal Portfolio Website</h3>
                 <p>A responsive portfolio website built with HTML, CSS, and JavaScript. Features a modern black-and-white design, smooth scrolling, and optimized layout for desktop and mobile devices.</p>
                 <div class="project-tags">
-                    <span class="tag">WEB DEV</span>
-                    <span class="tag">REACT</span>
-                    <span class="tag">NODE.JS</span>
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JAVASCRIPT</span>
                 </div>
                 <div class="project-links">
                     <a href="#">LIVE SITE →</a>
@@ -638,8 +654,7 @@
                     <span class="tag">SECURITY</span>
                 </div>
                 <div class="project-links">
-                    <a href="#">VIEW PROJECT →</a>
-                    <a href="#">GITHUB →</a>
+                    <a href="https://github.com/XoTtic809/authentication-hardening-system" target="_blank">GITHUB →</a>
                 </div>
             </div>
 
@@ -669,11 +684,11 @@
                     <h3>EMAIL</h3>
                     <p>lynnethan913@gmail.com</p>
                 </a>
-                <a href="https://github.com/XoTtic809" target="_blank" class="contact-method fade-in">
+                <a href="https://github.com/XoTtic809" target="_blank" class="contact-method fade-in" aria-label="Visit my GitHub profile">
                     <h3>GITHUB</h3>
                     <p>XoTtic809</p>
                 </a>
-                <a href="https://discord.com/users/1142211038666817710" target="_blank" class="contact-method fade-in">
+                <a href="https://discord.com/users/1142211038666817710" target="_blank" class="contact-method fade-in" aria-label="Connect with me on Discord">
                     <h3>DISCORD</h3>
                     <p>xottic809_97422</p>
                 </a>
@@ -683,7 +698,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Ethan Lynn. All rights reserved. Built with passion and code.</p>
+        <p>&copy; 2025 Ethan Lynn. All rights reserved. Built with passion and code.</p>
     </footer>
 
     <script>
