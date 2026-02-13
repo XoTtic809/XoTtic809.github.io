@@ -216,6 +216,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .btn-primary {
@@ -260,6 +261,83 @@
         .btn-secondary:hover {
             background: var(--white);
             color: var(--black);
+        }
+
+        /* ── PLAY GAME BUTTON ── */
+        .btn-game {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: color 0.3s ease;
+        }
+
+        .btn-game::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--white);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.35s ease;
+            z-index: 0;
+        }
+
+        .btn-game:hover::before {
+            transform: scaleX(1);
+        }
+
+        .btn-game:hover {
+            color: var(--black);
+        }
+
+        .btn-game span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-game .game-dot {
+            position: relative;
+            z-index: 1;
+            width: 8px;
+            height: 8px;
+            background: currentColor;
+            border-radius: 50%;
+            flex-shrink: 0;
+            animation: gamePulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes gamePulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.8); opacity: 0.5; }
+        }
+
+        /* Game feature strip below hero buttons */
+        .game-strip {
+            margin-top: 2.5rem;
+            animation: fadeIn 1s ease-out 0.9s both;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.75rem 1.5rem;
+            display: inline-flex;
+            gap: 2rem;
+            font-size: 0.78rem;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.55);
+        }
+
+        .game-strip span::before {
+            content: '▸ ';
+            color: rgba(255,255,255,0.3);
         }
 
         @keyframes slideDown {
@@ -515,6 +593,12 @@
             .hero h1 {
                 letter-spacing: 4px;
             }
+
+            .game-strip {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: left;
+            }
         }
 
         /* Scroll Animation */
@@ -559,6 +643,16 @@
             <div class="cta-buttons">
                 <a href="#projects" class="btn btn-primary" aria-label="View my projects"><span>VIEW PROJECTS</span></a>
                 <a href="#contact" class="btn btn-secondary" aria-label="Get in touch with me">GET IN TOUCH</a>
+                <a href="/topdown-action/" class="btn-game" aria-label="Play Topdown Action game">
+                    <div class="game-dot"></div>
+                    <span>PLAY MY GAME</span>
+                </a>
+            </div>
+            <div class="game-strip">
+                <span>WAVE SURVIVAL</span>
+                <span>BOSS FIGHTS</span>
+                <span>WEAPON UPGRADES</span>
+                <span>LEADERBOARD</span>
             </div>
         </div>
     </section>
@@ -617,6 +711,21 @@
     <section id="projects">
         <h2 class="section-title">FEATURED PROJECTS</h2>
         <div class="projects-grid">
+            <div class="project-card fade-in">
+                <h3>Topdown Action</h3>
+                <p>An intense browser-based top-down shooter with wave-based survival, epic boss fights, weapon upgrades, and a global leaderboard. Features Firebase auth, cloud saves, and 30+ unlockable skins.</p>
+                <div class="project-tags">
+                    <span class="tag">JAVASCRIPT</span>
+                    <span class="tag">HTML5 CANVAS</span>
+                    <span class="tag">FIREBASE</span>
+                    <span class="tag">GAME DEV</span>
+                </div>
+                <div class="project-links">
+                    <a href="/topdown-action/">PLAY NOW →</a>
+                    <a href="https://github.com/XoTtic809/topdown-action" target="_blank">GITHUB →</a>
+                </div>
+            </div>
+
             <div class="project-card fade-in">
                 <h3>UI Menu & HUD System</h3>
                 <p>A clean user interface built with Roblox Lua featuring animated menus, scalable layouts, and real-time stat updates.</p>
@@ -705,14 +814,12 @@
         const privacyNotice = document.getElementById('privacyNotice');
         const closeNotice = document.getElementById('closeNotice');
 
-        // Check if user has already seen the notice
         if (!localStorage.getItem('privacyNoticeDismissed')) {
             setTimeout(() => {
                 privacyNotice.classList.add('show');
-            }, 1000); // Show after 1 second
+            }, 1000);
         }
 
-        // Close button handler
         closeNotice.addEventListener('click', () => {
             privacyNotice.classList.remove('show');
             localStorage.setItem('privacyNoticeDismissed', 'true');
@@ -741,7 +848,6 @@
                     animation-delay: ${-Math.random() * 15}s;
                 `;
 
-                // Add unique animation for each particle
                 const style = document.createElement('style');
                 const moveX = -150 + Math.random() * 300;
                 const moveY = -150 + Math.random() * 300;
@@ -773,40 +879,29 @@
             }
         }
 
-        // Call on page load
         createFloatingParticles();
 
-        // Smooth scrolling for navigation links
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
         // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.fade-in').forEach((element) => {
-            observer.observe(element);
-        });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
