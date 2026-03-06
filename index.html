@@ -3,619 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethan Lynn - Developer Portfolio</title>
+    <title>Ethan Lynn — Developer Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background: var(--black);
-            color: var(--white);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--black);
-            border-bottom: 2px solid var(--white);
-            z-index: 1000;
-            padding: 1.5rem 2rem;
-        }
-
-        nav {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--white);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* Accessibility - Focus States */
-        a:focus,
-        button:focus {
-            outline: 2px solid var(--white);
-            outline-offset: 4px;
-        }
-
-        #projects a:focus {
-            outline-color: var(--black);
-        }
-
-        .nav-links a:focus {
-            outline: 2px solid var(--white);
-            outline-offset: 4px;
-        }
-
-        /* Privacy Notice */
-        .privacy-notice {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+        .quick-strip {
             background: var(--white);
             color: var(--black);
-            padding: 1rem 2rem;
-            border-top: 2px solid var(--black);
-            z-index: 2000;
-            display: none;
-            animation: slideUpNotice 0.5s ease-out;
+            border-top: 2px solid var(--white);
         }
 
-        .privacy-notice.show {
+        .quick-strip-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .quick-tile {
             display: block;
-        }
-
-        .privacy-notice-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .privacy-notice p {
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        .privacy-notice-close {
-            background: var(--white);
-            color: var(--black);
-            border: 2px solid var(--black);
-            padding: 0.5rem 1.5rem;
-            cursor: pointer;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .privacy-notice-close:hover {
-            background: var(--black);
-            color: var(--white);
-        }
-
-        @keyframes slideUpNotice {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .privacy-notice-content {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 70px;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 2rem;
-            background: var(--black);
-            overflow: hidden;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            max-width: 900px;
-        }
-
-        .hero h1 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 10vw, 8rem);
-            letter-spacing: 8px;
-            margin-bottom: 1rem;
-            animation: slideDown 1s ease-out;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            margin-bottom: 2rem;
-            animation: slideUp 1s ease-out 0.3s both;
-        }
-
-        .hero .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeIn 1s ease-out 0.6s both;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
+            padding: 3rem 2.5rem;
+            border-right: 2px solid rgba(0,0,0,0.12);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            color: var(--black);
             position: relative;
             overflow: hidden;
-            font-family: 'JetBrains Mono', monospace;
+            transition: color 0.35s ease;
         }
 
-        .btn-primary {
-            background: var(--white);
-            color: var(--black);
-            border: 2px solid var(--white);
-        }
+        .quick-tile:last-child { border-right: none; }
 
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: var(--black);
-            transform: translate(-50%, -50%);
-            transition: all 0.5s ease;
-            border-radius: 50%;
-        }
-
-        .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary:hover {
-            color: var(--white);
-        }
-
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            color: var(--black);
-        }
-
-        /* ── PLAY GAME BUTTON ── */
-        .btn-game {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            font-family: 'JetBrains Mono', monospace;
-            font-weight: 600;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
-            transition: color 0.3s ease;
-        }
-
-        .btn-game::before {
+        .quick-tile::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: var(--white);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.35s ease;
+            background: var(--black);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             z-index: 0;
         }
 
-        .btn-game:hover::before {
-            transform: scaleX(1);
-        }
+        .quick-tile:hover::before { transform: scaleY(1); }
+        .quick-tile:hover { color: var(--white); }
+        .quick-tile > * { position: relative; z-index: 1; }
 
-        .btn-game:hover {
-            color: var(--black);
-        }
-
-        .btn-game span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-game .game-dot {
-            position: relative;
-            z-index: 1;
-            width: 8px;
-            height: 8px;
-            background: currentColor;
-            border-radius: 50%;
-            flex-shrink: 0;
-            animation: gamePulse 1.4s ease-in-out infinite;
-        }
-
-        @keyframes gamePulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.8); opacity: 0.5; }
-        }
-
-        /* Game feature strip below hero buttons */
-        .game-strip {
-            margin-top: 2.5rem;
-            animation: fadeIn 1s ease-out 0.9s both;
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 0.75rem 1.5rem;
-            display: inline-flex;
-            gap: 2rem;
-            font-size: 0.78rem;
-            letter-spacing: 1px;
-            color: rgba(255,255,255,0.55);
-        }
-
-        .game-strip span::before {
-            content: '▸ ';
-            color: rgba(255,255,255,0.3);
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            letter-spacing: 4px;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 4px;
-            background: var(--white);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .skill-category {
-            border: 2px solid var(--white);
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            background: var(--white);
-            color: var(--black);
-            transform: translateX(10px);
-        }
-
-        .skill-category h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-category ul {
-            list-style: none;
-            font-size: 0.9rem;
-        }
-
-        .skill-category ul li::before {
-            content: '▸ ';
-            margin-right: 0.5rem;
-        }
-
-        /* Projects Section */
-        #projects {
-            background: var(--white);
-            color: var(--black);
-        }
-
-        #projects .section-title::after {
-            background: var(--black);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            border: 2px solid var(--black);
-            padding: 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--black);
-            transition: all 0.4s ease;
-            z-index: 0;
-        }
-
-        .project-card:hover::before {
-            left: 0;
-        }
-
-        .project-card:hover {
-            color: var(--white);
-        }
-
-        .project-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-card h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: 1rem 0;
-        }
-
-        .tag {
-            padding: 0.3rem 0.8rem;
-            border: 1px solid currentColor;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .project-links a {
-            color: inherit;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            border-bottom: 1px solid currentColor;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .contact-content p {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-        }
-
-        .contact-methods {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-method {
-            padding: 2rem;
-            border: 2px solid var(--white);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: var(--white);
+        .quick-num {
             display: block;
-        }
-
-        .contact-method:hover {
-            background: var(--white);
-            color: var(--black);
-            transform: translateY(-10px);
-        }
-
-        .contact-method h3 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
+            font-size: 3.5rem;
+            opacity: 0.07;
+            line-height: 1;
             margin-bottom: 0.5rem;
         }
 
-        /* Footer */
-        footer {
-            background: var(--white);
-            color: var(--black);
-            text-align: center;
-            padding: 2rem;
-            border-top: 2px solid var(--black);
+        .quick-tile h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
         }
 
-        footer p {
-            font-size: 0.9rem;
+        .quick-tile p {
+            font-size: 0.88rem;
+            opacity: 0.65;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
-        /* Responsive */
+        .quick-arrow {
+            font-size: 1.5rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .quick-tile:hover .quick-arrow { transform: translateX(6px); }
+
         @media (max-width: 768px) {
-            .nav-links {
-                gap: 1rem;
+            .quick-strip-inner { grid-template-columns: 1fr; }
+            .quick-tile {
+                border-right: none;
+                border-bottom: 2px solid rgba(0,0,0,0.12);
             }
-
-            .nav-links a {
-                font-size: 0.8rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                letter-spacing: 4px;
-            }
-
-            .game-strip {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: left;
-            }
-        }
-
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .quick-tile:last-child { border-bottom: none; }
         }
     </style>
 </head>
-<body id="top">
-    <!-- Privacy Notice -->
+<body>
+
     <div class="privacy-notice" id="privacyNotice">
         <div class="privacy-notice-content">
             <p>No cookies, no tracking, no data collection — your privacy is respected here.</p>
@@ -623,31 +100,39 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <header>
         <nav>
-            <a href="#top" class="logo" aria-label="Return to top of page">ETHAN LYNN</a>
+            <a href="index.html" class="logo" data-text="ETHAN LYNN" aria-label="Home">ETHAN LYNN</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
-                <li><a href="#about" aria-label="Navigate to About section">ABOUT</a></li>
-                <li><a href="#projects" aria-label="Navigate to Projects section">PROJECTS</a></li>
-                <li><a href="#contact" aria-label="Navigate to Contact section">CONTACT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="projects.html">PROJECTS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>ETHAN LYNN</h1>
-            <p class="subtitle">Developer | Cybersecurity Enthusiast | Web Developer | Game Developer</p>
+            <h1>
+                <span class="word">ETHAN&nbsp;</span><span class="word">LYNN</span>
+            </h1>
+
+            <p class="subtitle" id="typedSubtitle"></p>
+
             <div class="cta-buttons">
-                <a href="#projects" class="btn btn-primary" aria-label="View my projects"><span>VIEW PROJECTS</span></a>
-                <a href="#contact" class="btn btn-secondary" aria-label="Get in touch with me">GET IN TOUCH</a>
+                <a href="projects.html" class="btn btn-primary"><span>VIEW PROJECTS</span></a>
+                <a href="contact.html" class="btn btn-secondary">GET IN TOUCH</a>
                 <a href="/topdown-action/" class="btn-game" aria-label="Play Topdown Action game">
                     <div class="game-dot"></div>
                     <span>PLAY MY GAME</span>
                 </a>
             </div>
+
             <div class="game-strip">
                 <span>WAVE SURVIVAL</span>
                 <span>BOSS FIGHTS</span>
@@ -657,251 +142,49 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title">ABOUT ME</h2>
-        <div class="about-content">
-            <div class="about-text fade-in">
-                <p>I'm a developer with experience in game development, cybersecurity, and web development. I have a strong foundation in computer science and enjoy building engaging systems as well as secure, reliable solutions.</p>
-                <p>I'm currently looking for opportunities to work with innovative teams and contribute to meaningful projects. Whether I'm developing games, building secure web applications, or tackling cybersecurity challenges, I approach my work with focus, care, and attention to detail.</p>
-                <p>My goal is to continue growing as a developer while using my skills to create practical, well-designed digital experiences.</p>
-            </div>
-            <div class="skills-grid fade-in">
-                <div class="skill-category">
-                    <h3>GAME DEV</h3>
-                    <ul>
-                        <li>Lua Scripting</li>
-                        <li>Game Design</li>
-                        <li>UI/UX</li>
-                        <li>Datastores</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>WEB DEV</h3>
-                    <ul>
-                        <li>HTML/CSS/JS</li>
-                        <li>React</li>
-                        <li>Node.js</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>CYBERSECURITY</h3>
-                    <ul>
-                        <li>Network Security</li>
-                        <li>Ethical Hacking</li>
-                        <li>Penetration Testing</li>
-                        <li>Security Protocols</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>GENERAL</h3>
-                    <ul>
-                        <li>Python</li>
-                        <li>Git/GitHub</li>
-                        <li>Problem Solving</li>
-                        <li>Team Collaboration</li>
-                    </ul>
-                </div>
-            </div>
+    <div class="quick-strip">
+        <div class="quick-strip-inner">
+            <a href="about.html" class="quick-tile reveal">
+                <span class="quick-num">01</span>
+                <h3>ABOUT ME</h3>
+                <p>Developer. Cybersecurity enthusiast. Game creator.</p>
+                <span class="quick-arrow">→</span>
+            </a>
+            <a href="projects.html" class="quick-tile reveal" style="transition-delay: 0.1s">
+                <span class="quick-num">02</span>
+                <h3>PROJECTS</h3>
+                <p>Games, web apps, security tools &amp; more.</p>
+                <span class="quick-arrow">→</span>
+            </a>
+            <a href="contact.html" class="quick-tile reveal" style="transition-delay: 0.2s">
+                <span class="quick-num">03</span>
+                <h3>CONTACT</h3>
+                <p>Let's build something great together.</p>
+                <span class="quick-arrow">→</span>
+            </a>
         </div>
-    </section>
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 class="section-title">FEATURED PROJECTS</h2>
-        <div class="projects-grid">
-            <div class="project-card fade-in">
-                <h3>Topdown Action</h3>
-                <p>An intense browser-based top-down shooter with wave-based survival, epic boss fights, weapon upgrades, and a global leaderboard. Features Firebase auth, cloud saves, and 30+ unlockable skins.</p>
-                <div class="project-tags">
-                    <span class="tag">JAVASCRIPT</span>
-                    <span class="tag">HTML5 CANVAS</span>
-                    <span class="tag">FIREBASE</span>
-                    <span class="tag">GAME DEV</span>
-                </div>
-                <div class="project-links">
-                    <a href="/topdown-action/">PLAY NOW →</a>
-                    <a href="https://github.com/XoTtic809/topdown-action" target="_blank">GITHUB →</a>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <h3>UI Menu & HUD System</h3>
-                <p>A clean user interface built with Lua featuring animated menus, scalable layouts, and real-time stat updates.</p>
-                <div class="project-tags">
-                    <span class="tag">ROBLOX</span>
-                    <span class="tag">LUA</span>
-                    <span class="tag">GAME DESIGN</span>
-                </div>
-                <div class="project-links">
-                    <a href="#">VIEW PROJECT →</a>
-                    <a href="#">GITHUB →</a>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <h3>Personal Portfolio Website</h3>
-                <p>A responsive portfolio website built with HTML, CSS, and JavaScript. Features a modern black-and-white design, smooth scrolling, and optimized layout for desktop and mobile devices.</p>
-                <div class="project-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JAVASCRIPT</span>
-                </div>
-                <div class="project-links">
-                    <a href="#">LIVE SITE →</a>
-                    <a href="#">GITHUB →</a>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <h3>Authentication Hardening System</h3>
-                <p>A security-focused authentication system implementing password hashing, rate limiting, and account lockout protections against brute-force attacks.</p>
-                <div class="project-tags">
-                    <span class="tag">CYBERSECURITY</span>
-                    <span class="tag">PYTHON</span>
-                    <span class="tag">SECURITY</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/XoTtic809/authentication-hardening-system" target="_blank">GITHUB →</a>
-                </div>
-            </div>
-
-            <div class="project-card fade-in">
-                <h3>Secure Authentication API</h3>
-                <p>An API that manages user login and registration using hashed passwords, JWT token authentication, and SQLite database for persistent user accounts.</p>
-                <div class="project-tags">
-                    <span class="tag">FULL STACK</span>
-                    <span class="tag">API</span>
-                    <span class="tag">DATABASE</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/XoTtic809/secure-authentication-api" target="_blank">GITHUB →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title">LET'S CONNECT</h2>
-        <div class="contact-content">
-            <p>I'm always open to discussing new projects, creative ideas, or opportunities to join your team. Feel free to reach out!</p>
-            <div class="contact-methods">
-                <a href="mailto:lynnethan913@gmail.com" class="contact-method fade-in">
-                    <h3>EMAIL</h3>
-                    <p>lynnethan913@gmail.com</p>
-                </a>
-                <a href="https://github.com/XoTtic809" target="_blank" class="contact-method fade-in" aria-label="Visit my GitHub profile">
-                    <h3>GITHUB</h3>
-                    <p>XoTtic809</p>
-                </a>
-                <a href="https://discord.com/users/1142211038666817710" target="_blank" class="contact-method fade-in" aria-label="Connect with me on Discord">
-                    <h3>DISCORD</h3>
-                    <p>xottic809_97422</p>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Ethan Lynn. All rights reserved. Built with passion and code.</p>
     </footer>
 
+    <script src="js/main.js"></script>
     <script>
-        // Privacy Notice Logic
-        const privacyNotice = document.getElementById('privacyNotice');
-        const closeNotice = document.getElementById('closeNotice');
+        EL.createFloatingParticles(document.getElementById('hero'), 50);
 
-        if (!localStorage.getItem('privacyNoticeDismissed')) {
-            setTimeout(() => {
-                privacyNotice.classList.add('show');
-            }, 1000);
-        }
-
-        closeNotice.addEventListener('click', () => {
-            privacyNotice.classList.remove('show');
-            localStorage.setItem('privacyNoticeDismissed', 'true');
-        });
-
-        // Create floating particles
-        function createFloatingParticles() {
-            const hero = document.querySelector('.hero');
-            const numParticles = 50;
-
-            for (let i = 0; i < numParticles; i++) {
-                const particle = document.createElement('div');
-                const size = 2 + Math.random() * 6;
-                
-                particle.className = 'particle';
-                particle.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    background: rgba(255, 255, 255, ${0.2 + Math.random() * 0.6});
-                    border-radius: 50%;
-                    top: ${Math.random() * 100}%;
-                    left: ${-5 + Math.random() * 110}%;
-                    pointer-events: none;
-                    animation: particleFloat${i} ${10 + Math.random() * 20}s ease-in-out infinite;
-                    animation-delay: ${-Math.random() * 15}s;
-                `;
-
-                const style = document.createElement('style');
-                const moveX = -150 + Math.random() * 300;
-                const moveY = -150 + Math.random() * 300;
-                const moveX2 = -120 + Math.random() * 240;
-                const moveY2 = -120 + Math.random() * 240;
-                
-                style.textContent = `
-                    @keyframes particleFloat${i} {
-                        0%, 100% { 
-                            transform: translate(0, 0);
-                            opacity: ${0.2 + Math.random() * 0.4};
-                        }
-                        25% {
-                            transform: translate(${moveX * 0.3}px, ${moveY * 0.3}px);
-                            opacity: ${0.4 + Math.random() * 0.5};
-                        }
-                        50% {
-                            transform: translate(${moveX}px, ${moveY}px);
-                            opacity: ${0.3 + Math.random() * 0.4};
-                        }
-                        75% {
-                            transform: translate(${moveX2}px, ${moveY2}px);
-                            opacity: ${0.5 + Math.random() * 0.4};
-                        }
-                    }
-                `;
-                document.head.appendChild(style);
-                hero.appendChild(particle);
-            }
-        }
-
-        createFloatingParticles();
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        EL.typeText(
+            document.getElementById('typedSubtitle'),
+            [
+                'Developer | Game Creator',
+                'Cybersecurity Enthusiast',
+                'Web Developer',
+                'Builder of Interactive Experiences'
+            ],
+            65,
+            2400
+        );
     </script>
+
 </body>
 </html>

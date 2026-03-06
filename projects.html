@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Ethan Lynn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .cursor {
+            background: var(--black);
+            mix-blend-mode: normal;
+        }
+
+        .cursor-ring { border-color: rgba(0,0,0,0.5); }
+        .cursor.hover { background: var(--black); }
+        .cursor-ring.hover { border-color: rgba(0,0,0,0.9); }
+
+        .scroll-progress { background: var(--black); }
+
+        header {
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
+        }
+
+        .logo,
+        .nav-links a { color: var(--black); }
+
+        .nav-links a::after { background: var(--black); }
+        .nav-toggle span { background: var(--black); }
+
+        .nav-links {
+            background: var(--white);
+            border-bottom-color: var(--black);
+        }
+
+        .nav-links a { border-bottom-color: rgba(0,0,0,0.1); }
+
+        footer {
+            background: var(--black);
+            color: var(--white);
+            border-top: 2px solid var(--white);
+        }
+
+        .page-divider { background: var(--black); }
+
+        a:focus, button:focus { outline-color: var(--black); }
+
+        .project-card.featured { border-width: 3px; }
+
+        .featured-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            border: 1px solid currentColor;
+            padding: 0.2rem 0.6rem;
+            margin-bottom: 0.75rem;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo" data-text="ETHAN LYNN">ETHAN LYNN</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="projects.html">PROJECTS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <h1 class="page-title">
+            <span class="page-title-word">FEATURED&nbsp;</span><span class="page-title-word">PROJECTS</span>
+        </h1>
+        <div class="page-divider"></div>
+    </div>
+
+    <div class="projects-inner">
+
+        <div class="projects-filter reveal">
+            <button class="filter-btn active" data-filter="all">ALL</button>
+            <button class="filter-btn" data-filter="game">GAME DEV</button>
+            <button class="filter-btn" data-filter="web">WEB</button>
+            <button class="filter-btn" data-filter="security">SECURITY</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+
+            <div class="project-card featured reveal" data-category="game">
+                <div class="featured-badge">FEATURED</div>
+                <div class="project-num">01</div>
+                <h3>Topdown Action</h3>
+                <p>An intense browser-based top-down shooter with wave-based survival, epic boss fights, weapon upgrades, and a global leaderboard. Features Firebase auth, cloud saves, and 30+ unlockable skins.</p>
+                <div class="project-tags">
+                    <span class="tag">JAVASCRIPT</span>
+                    <span class="tag">HTML5 CANVAS</span>
+                    <span class="tag">FIREBASE</span>
+                    <span class="tag">GAME DEV</span>
+                </div>
+                <div class="project-links">
+                    <a href="/topdown-action/">PLAY NOW →</a>
+                    <a href="https://github.com/XoTtic809/topdown-action" target="_blank" rel="noopener">GITHUB →</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="game" style="transition-delay: 0.08s">
+                <div class="project-num">02</div>
+                <h3>UI Menu &amp; HUD System</h3>
+                <p>A clean user interface built with Lua featuring animated menus, scalable layouts, and real-time stat updates for Roblox game projects.</p>
+                <div class="project-tags">
+                    <span class="tag">ROBLOX</span>
+                    <span class="tag">LUA</span>
+                    <span class="tag">GAME DESIGN</span>
+                </div>
+                <div class="project-links">
+                    <a href="#">VIEW PROJECT →</a>
+                    <a href="#">GITHUB →</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="web" style="transition-delay: 0.16s">
+                <div class="project-num">03</div>
+                <h3>Personal Portfolio Website</h3>
+                <p>A responsive portfolio website built with HTML, CSS, and JavaScript. Features a modern black-and-white design, smooth transitions, custom cursor, particle effects, and animated page titles.</p>
+                <div class="project-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JAVASCRIPT</span>
+                </div>
+                <div class="project-links">
+                    <a href="index.html">LIVE SITE →</a>
+                    <a href="#">GITHUB →</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="security" style="transition-delay: 0.24s">
+                <div class="project-num">04</div>
+                <h3>Authentication Hardening System</h3>
+                <p>A security-focused authentication system implementing password hashing, rate limiting, and account lockout protections against brute-force attacks.</p>
+                <div class="project-tags">
+                    <span class="tag">CYBERSECURITY</span>
+                    <span class="tag">PYTHON</span>
+                    <span class="tag">SECURITY</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/XoTtic809/authentication-hardening-system" target="_blank" rel="noopener">GITHUB →</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal" data-category="security" style="transition-delay: 0.32s">
+                <div class="project-num">05</div>
+                <h3>Secure Authentication API</h3>
+                <p>An API that manages user login and registration using hashed passwords, JWT token authentication, and SQLite database for persistent user accounts.</p>
+                <div class="project-tags">
+                    <span class="tag">FULL STACK</span>
+                    <span class="tag">API</span>
+                    <span class="tag">DATABASE</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/XoTtic809/secure-authentication-api" target="_blank" rel="noopener">GITHUB →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Ethan Lynn. All rights reserved. Built with passion and code.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                cards.forEach(card => {
+                    const matches = filter === 'all' || card.dataset.category === filter;
+
+                    card.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+
+                    if (matches) {
+                        card.style.display = '';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.95)';
+                        setTimeout(() => { card.style.display = 'none'; }, 350);
+                    }
+                });
+            });
+        });
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const rotX = ((y - rect.height / 2) / rect.height) * -4;
+                const rotY = ((x - rect.width  / 2) / rect.width)  *  4;
+                card.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.01)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale(1)';
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Ethan Lynn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .marquee-band {
+            overflow: hidden;
+            border-top: 2px solid rgba(255,255,255,0.12);
+            border-bottom: 2px solid rgba(255,255,255,0.12);
+            padding: 1.25rem 0;
+            margin: 4rem 0;
+        }
+
+        .marquee-track {
+            display: flex;
+            gap: 3rem;
+            animation: marqueeScroll 18s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-item {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 4px;
+            opacity: 0.15;
+            flex-shrink: 0;
+        }
+
+        .marquee-item .dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--white);
+            border-radius: 50%;
+            margin: 0 1.5rem;
+            vertical-align: middle;
+            opacity: 0.4;
+        }
+
+        @keyframes marqueeScroll {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        .contact-cta {
+            padding: 5rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .cta-label {
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            opacity: 0.4;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-cta-email {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.8rem, 4.5vw, 4rem);
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+        }
+
+        .contact-cta-email::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--white);
+            transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .contact-cta-email:hover::after { width: 100%; }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            border-color: var(--white);
+            background: var(--white);
+            color: var(--black);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="privacy-notice" id="privacyNotice">
+        <div class="privacy-notice-content">
+            <p>No cookies, no tracking, no data collection — your privacy is respected here.</p>
+            <button class="privacy-notice-close" id="closeNotice" aria-label="Close privacy notice">GOT IT</button>
+        </div>
+    </div>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo" data-text="ETHAN LYNN">ETHAN LYNN</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="projects.html">PROJECTS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <h1 class="page-title">
+            <span class="page-title-word">LET'S&nbsp;</span><span class="page-title-word">CONNECT</span>
+        </h1>
+        <div class="page-divider"></div>
+    </div>
+
+    <section style="padding-top: 2rem;">
+        <div class="contact-layout">
+
+            <div class="contact-intro">
+                <p class="reveal">I'm always open to discussing new projects, creative ideas, or opportunities to join an innovative team. Whether you have a question, a collaboration in mind, or just want to say hi — my inbox is open.</p>
+                <p class="reveal" style="transition-delay: 0.1s">I typically respond within 24 hours. Feel free to reach out on any platform you prefer.</p>
+            </div>
+
+            <div class="contact-methods">
+                <a href="mailto:lynnethan913@gmail.com" class="contact-method reveal">
+                    <div class="contact-method-icon">@</div>
+                    <div class="contact-method-info">
+                        <h3>EMAIL</h3>
+                        <p>lynnethan913@gmail.com</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com/XoTtic809" target="_blank" rel="noopener" class="contact-method reveal" style="transition-delay: 0.1s">
+                    <div class="contact-method-icon">GH</div>
+                    <div class="contact-method-info">
+                        <h3>GITHUB</h3>
+                        <p>XoTtic809</p>
+                    </div>
+                </a>
+
+                <a href="https://discord.com/users/1142211038666817710" target="_blank" rel="noopener" class="contact-method reveal" style="transition-delay: 0.2s">
+                    <div class="contact-method-icon">DC</div>
+                    <div class="contact-method-info">
+                        <h3>DISCORD</h3>
+                        <p>xottic809_97422</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="marquee-band reveal">
+            <div class="marquee-track" id="marqueeTrack"></div>
+        </div>
+
+        <div class="contact-cta reveal">
+            <p class="cta-label">DROP ME A LINE</p>
+            <a href="mailto:lynnethan913@gmail.com" class="contact-cta-email">
+                lynnethan913@gmail.com
+            </a>
+            <div class="social-row">
+                <a href="https://github.com/XoTtic809" target="_blank" rel="noopener" class="social-btn">GITHUB</a>
+                <a href="https://discord.com/users/1142211038666817710" target="_blank" rel="noopener" class="social-btn">DISCORD</a>
+                <a href="mailto:lynnethan913@gmail.com" class="social-btn">EMAIL</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ethan Lynn. All rights reserved. Built with passion and code.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const words = ['AVAILABLE FOR WORK', 'OPEN TO COLLABS', "LET'S BUILD SOMETHING", 'GET IN TOUCH', 'ETHAN LYNN'];
+        const track = document.getElementById('marqueeTrack');
+
+        [...words, ...words, ...words, ...words].forEach(word => {
+            const span = document.createElement('span');
+            span.className = 'marquee-item';
+            span.innerHTML = word + '<span class="dot"></span>';
+            track.appendChild(span);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — Ethan Lynn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin: 5rem 0;
+            border: 2px solid var(--white);
+        }
+
+        .stat-item {
+            padding: 2.5rem 2rem;
+            border-right: 2px solid rgba(255,255,255,0.15);
+            text-align: center;
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            letter-spacing: 2px;
+            line-height: 1;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        .availability {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: 2px solid rgba(255,255,255,0.25);
+            padding: 0.6rem 1.25rem;
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 3rem;
+        }
+
+        .avail-dot {
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            animation: availPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes availPulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,255,255,0.6); }
+            50%       { opacity: 0.6; box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+        }
+
+        .svg-divider {
+            margin: 4rem 0 2rem;
+            overflow: visible;
+        }
+
+        .svg-divider line {
+            stroke: var(--white);
+            stroke-width: 1;
+            stroke-dasharray: 1400;
+            stroke-dashoffset: 1400;
+        }
+
+        .svg-divider.visible line {
+            animation: drawLine 1.4s ease forwards;
+        }
+
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .stats-row { grid-template-columns: 1fr; }
+            .stat-item {
+                border-right: none;
+                border-bottom: 2px solid rgba(255,255,255,0.15);
+            }
+            .stat-item:last-child { border-bottom: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo" data-text="ETHAN LYNN">ETHAN LYNN</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="projects.html">PROJECTS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-hero">
+        <div class="availability reveal">
+            <div class="avail-dot"></div>
+            OPEN TO OPPORTUNITIES
+        </div>
+        <h1 class="page-title">
+            <span class="page-title-word">ABOUT&nbsp;</span><span class="page-title-word">ME</span>
+        </h1>
+        <div class="page-divider"></div>
+    </div>
+
+    <section style="padding-top: 2rem;">
+        <div class="about-layout">
+
+            <div class="about-text">
+                <p class="reveal">I'm a developer with experience in game development, cybersecurity, and web development. I have a strong foundation in computer science and enjoy building engaging systems as well as secure, reliable solutions.</p>
+
+                <p class="reveal" style="transition-delay: 0.1s">I'm currently looking for opportunities to work with innovative teams and contribute to meaningful projects. Whether I'm developing games, building secure web applications, or tackling cybersecurity challenges, I approach my work with focus, care, and attention to detail.</p>
+
+                <p class="reveal" style="transition-delay: 0.2s">My goal is to continue growing as a developer while using my skills to create practical, well-designed digital experiences.</p>
+
+                <div style="margin-top: 2.5rem;" class="reveal" style="transition-delay: 0.3s">
+                    <a href="contact.html" class="btn btn-primary"><span>GET IN TOUCH</span></a>
+                </div>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-card reveal">
+                    <h3>GAME DEV</h3>
+                    <ul>
+                        <li>Lua Scripting</li>
+                        <li>Game Design</li>
+                        <li>UI / UX</li>
+                        <li>Datastores</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal" style="transition-delay: 0.08s">
+                    <h3>WEB DEV</h3>
+                    <ul>
+                        <li>HTML / CSS / JS</li>
+                        <li>React</li>
+                        <li>Node.js</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal" style="transition-delay: 0.16s">
+                    <h3>CYBERSECURITY</h3>
+                    <ul>
+                        <li>Network Security</li>
+                        <li>Ethical Hacking</li>
+                        <li>Penetration Testing</li>
+                        <li>Security Protocols</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card reveal" style="transition-delay: 0.24s">
+                    <h3>GENERAL</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Git / GitHub</li>
+                        <li>Problem Solving</li>
+                        <li>Team Collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-row reveal">
+            <div class="stat-item">
+                <span class="stat-number" data-target="5">0</span>
+                <span class="stat-label">PROJECTS SHIPPED</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="3">0</span>
+                <span class="stat-label">DISCIPLINES</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" data-target="100">0</span>
+                <span class="stat-label">% PASSION</span>
+            </div>
+        </div>
+
+        <svg class="svg-divider reveal" width="100%" height="2" viewBox="0 0 1400 2" preserveAspectRatio="none">
+            <line x1="0" y1="1" x2="1400" y2="1"/>
+        </svg>
+
+        <div class="timeline">
+            <h2 class="section-title reveal">JOURNEY</h2>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-content">
+                    <h3>FIRST LINES OF CODE</h3>
+                    <p>Started learning Lua through Roblox game development. Built my first interactive experiences and caught the programming bug for good.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-content">
+                    <h3>WEB DEVELOPMENT</h3>
+                    <p>Expanded into HTML, CSS, and JavaScript. Learned React and Node.js, discovering a passion for building things people can interact with on the web.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h3>CYBERSECURITY FOCUS</h3>
+                    <p>Dove into network security, ethical hacking, and penetration testing. Built authentication hardening tools and security-focused APIs.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-content">
+                    <h3>TOPDOWN ACTION + NOW</h3>
+                    <p>Shipped a full browser-based top-down shooter with Firebase, global leaderboards, and 30+ unlockable skins. Currently seeking my next big challenge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Ethan Lynn. All rights reserved. Built with passion and code.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function animateCounter(el) {
+            const target = parseInt(el.dataset.target);
+            const duration = 1200;
+            const startTime = performance.now();
+
+            function update(now) {
+                const progress = Math.min((now - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.round(eased * target);
+                if (progress < 1) requestAnimationFrame(update);
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        const counterObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+            counterObserver.observe(el);
+        });
+    </script>
+
+</body>
+</html>
